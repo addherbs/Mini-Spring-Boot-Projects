@@ -1,0 +1,5 @@
+insert into person values(1, "Nola", "java")
+insert into person values(2, "Kentucky", "Android")
+insert into person values(3, "Parabola", "Python")
+insert into person values(4, "Kolumbia LOL", "java")
+insert into person values(5, "Raftel", "Android")
