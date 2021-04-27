@@ -1,5 +1,9 @@
-insert into person values(1, "Nola", "java")
-insert into person values(2, "Kentucky", "Android")
-insert into person values(3, "Parabola", "Python")
-insert into person values(4, "Kolumbia LOL", "java")
-insert into person values(5, "Raftel", "Android")
+INSERT INTO PERSON (pid, pname, planguage) VALUES (1, 'Nola', 'java');
+
+INSERT INTO PERSON (pid, pname, planguage) VALUES (2, 'Kentucky', 'Android');
+
+INSERT INTO PERSON (pid, pname, planguage) VALUES (3, 'Parabola', 'Python');
+
+INSERT INTO PERSON (pid, pname, planguage) VALUES (4, 'Kolumbia LOL', 'java');
+
+INSERT INTO PERSON (pid, pname, planguage) VALUES (5, 'Raftel', 'Android');

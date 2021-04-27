@@ -1,36 +1,38 @@
 package com.example.usingdatajpawithh2database.model;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Entity
 public class Person {
 
     @Id
     private int pid;
     private String pname;
-    private String language;
+    private String planguage;
 
-    public int getPid() {
+    public int getpid() {
         return pid;
     }
 
-    public void setPid(int pid) {
+    public void setpid(int pid) {
         this.pid = pid;
     }
 
-    public String getPname() {
+    public String getpname() {
         return pname;
     }
 
-    public void setPname(String pname) {
+    public void setpname(String pname) {
         this.pname = pname;
     }
 
-    public String getLanguage() {
-        return language;
+    public String getplanguage() {
+        return planguage;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
+    public void setplanguage(String language) {
+        this.planguage = language;
     }
 
     @Override
@@ -38,7 +40,7 @@ public class Person {
         return "Person{" +
                 "pid=" + pid +
                 ", pname='" + pname + '\'' +
-                ", language='" + language + '\'' +
+                ", language='" + planguage + '\'' +
                 '}';
     }
 }
