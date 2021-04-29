@@ -11,6 +11,12 @@ public class Person {
     private String pname;
     private String planguage;
 
+    public Person(){
+        setpid(-1);
+        setplanguage("");
+        setpname("");
+    }
+
     public int getpid() {
         return pid;
     }

@@ -20,6 +20,20 @@ public class PersonController {
         return "home.jsp";
     }
 
+    @DeleteMapping(path = "/person/{pid}")
+    public String deletePerson(@PathVariable("pid") int pid){
+        Person person = personRepo.getOne(pid);
+        personRepo.delete(person);
+        return "Deleted";
+    }
+
+    @PutMapping(path = "/person")
+    public Person saveOrUpdatePerson(@RequestBody Person person){
+        personRepo.save(person);
+        return person;
+    }
+
+
     @PostMapping(value = "/addPerson", consumes = {"application/json", "application/xml"})
     public Person addPerson(@RequestBody Person person){
         System.out.println(person.toString());
