@@ -4,9 +4,9 @@ import com.example.usingdatajpawithh2database.model.Person;
 import com.example.usingdatajpawithh2database.repos.PersonRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,27 +30,18 @@ public class PersonController {
         return "home.jsp";
     }
 
+    @ResponseBody
     @RequestMapping("/allPersons")
-    public ModelAndView getAllPersons(){
-
-        ModelAndView mv = new ModelAndView("showPerson.jsp");
-        List<Person> person = personRepo.findAll();
-        mv.addObject("obj", person);
-
-        System.out.println(person.toString());
-
-        return mv;
+    public List<Person> getAllPersons(){
+        System.out.println("into getAllPersons");
+        return personRepo.findAll();
     }
 
-    @RequestMapping("/getPerson")
-    public ModelAndView getPerson(@RequestParam int pid){
-        Person person = personRepo.findById(pid).orElse(new Person());
-        ModelAndView mv = new ModelAndView("showPerson.jsp");
-        mv.addObject("obj", person);
-
-        System.out.println(person.toString());
-
-        return mv;
+    @ResponseBody
+    @RequestMapping("/getPerson/{pid}")
+    public Optional<Person> getPerson(@PathVariable("pid") int pid){
+        System.out.println("into getPerson");
+        return personRepo.findById(pid);
     }
 
 }
