@@ -3,7 +3,6 @@ package com.example.usingdatajpawithh2database.controller;
 import com.example.usingdatajpawithh2database.model.Person;
 import com.example.usingdatajpawithh2database.repos.PersonRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,7 +31,6 @@ public class PersonController {
         personRepo.save(person);
         return person;
     }
-
 
     @PostMapping(value = "/addPerson", consumes = {"application/json", "application/xml"})
     public Person addPerson(@RequestBody Person person){
