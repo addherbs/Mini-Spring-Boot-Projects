@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class PersonController {
@@ -26,11 +30,27 @@ public class PersonController {
         return "home.jsp";
     }
 
+    @RequestMapping("/allPersons")
+    public ModelAndView getAllPersons(){
+
+        ModelAndView mv = new ModelAndView("showPerson.jsp");
+        List<Person> person = personRepo.findAll();
+        mv.addObject("obj", person);
+
+        System.out.println(person.toString());
+
+        return mv;
+    }
+
     @RequestMapping("/getPerson")
-    public String getPerson(@RequestParam int pid){
-        System.out.println("Came to Get Person");
-        Person personObj = (Person) personRepo.findAllByPid(pid);
-        return "home.jsp";
+    public ModelAndView getPerson(@RequestParam int pid){
+        Person person = personRepo.findById(pid).orElse(new Person());
+        ModelAndView mv = new ModelAndView("showPerson.jsp");
+        mv.addObject("obj", person);
+
+        System.out.println(person.toString());
+
+        return mv;
     }
 
 }

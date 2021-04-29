@@ -9,7 +9,7 @@
 <body>
 
 
-${person}
+${obj}
 
 </body>
 </html>
