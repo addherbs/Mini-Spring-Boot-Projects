@@ -31,7 +31,7 @@ public class PersonController {
     }
 
     @ResponseBody
-    @RequestMapping("/allPersons")
+    @RequestMapping(path = "/allPersons", produces = {"application/xml", "application/json"})
     public List<Person> getAllPersons(){
         System.out.println("into getAllPersons");
         return personRepo.findAll();
