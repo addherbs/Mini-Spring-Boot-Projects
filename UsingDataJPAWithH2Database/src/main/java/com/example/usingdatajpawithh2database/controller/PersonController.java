@@ -4,14 +4,12 @@ import com.example.usingdatajpawithh2database.model.Person;
 import com.example.usingdatajpawithh2database.repos.PersonRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 public class PersonController {
 
     @Autowired
@@ -22,23 +20,20 @@ public class PersonController {
         return "home.jsp";
     }
 
-    @RequestMapping("/addPerson")
-    public String addPerson(Person person){
-        System.out.println("Came to Add Person");
+    @PostMapping(value = "/addPerson", consumes = {"application/json", "application/xml"})
+    public Person addPerson(@RequestBody Person person){
         System.out.println(person.toString());
         personRepo.save(person);
-        return "home.jsp";
+        return person;
     }
 
-    @ResponseBody
-    @RequestMapping(path = "/allPersons", produces = {"application/xml", "application/json"})
+    @GetMapping(path = "/allPersons", produces = {"application/xml", "application/json"})
     public List<Person> getAllPersons(){
         System.out.println("into getAllPersons");
         return personRepo.findAll();
     }
 
-    @ResponseBody
-    @RequestMapping("/getPerson/{pid}")
+    @GetMapping("/getPerson/{pid}")
     public Optional<Person> getPerson(@PathVariable("pid") int pid){
         System.out.println("into getPerson");
         return personRepo.findById(pid);
