@@ -17,7 +17,7 @@ public class KafkaConfiguration {
     @Bean
     public ProducerFactory<String, String> producerFactory() {
         Map<String, Object> config = new HashMap<>();
-        System.out.println("Came to ProducerFactory<String, String> producerFactory");
+//        System.out.println("Came to ProducerFactory<String, String> producerFactory");
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -27,7 +27,7 @@ public class KafkaConfiguration {
 
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate() {
-        System.out.println("Came to KafkaTemplate<String, String> kafkaTemplate");
+//        System.out.println("Came to KafkaTemplate<String, String> kafkaTemplate");
         return new KafkaTemplate<>(producerFactory());
     }
 
